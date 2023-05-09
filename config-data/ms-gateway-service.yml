@@ -16,5 +16,9 @@ spring:
           uri: lb://ms-configuracion-service
           predicates:
             - Path=/institucion/**,/filial/**,/facultad/**,/escuela-profesional/**,/periodo/**,/persona/**
+        - id: ms-evento-service
+          uri: lb://ms-evento-service
+          predicates:
+            - Path=/evento/**
 
 
