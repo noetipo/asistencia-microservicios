@@ -13,7 +13,7 @@ spring:
           enabled: true
       routes:
         - id: ms-configuracion-service
-          uri: lb://catalogo-service
+          uri: lb://ms-configuracion-service
           predicates:
             - Path=/institucion/**,/filial/**,/facultad/**,/escuela-profesional/**,/periodo/**,/persona/**
 
