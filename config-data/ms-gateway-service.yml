@@ -20,5 +20,9 @@ spring:
           uri: lb://ms-evento-service
           predicates:
             - Path=/evento/**
+        - id: ms-asistencia-service
+          uri: lb://ms-asistencia-service
+          predicates:
+            - Path=/asistencia/**
 
 
