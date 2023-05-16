@@ -22,17 +22,17 @@ spring:
         locator:
           enabled: true
       routes:
-        - id: ms-configuracion-service
-          uri: lb://ms-configuracion-service
+        - id: ms-bff-asistencia-web-service
+          uri: lb://ms-bff-asistencia-web-service
           predicates:
             - Path=/institucion/**,/filial/**,/facultad/**,/escuela-profesional/**,/periodo/**,/persona/**,/ciclo**,/grupo**,/persona/matricula**
-        - id: ms-evento-service
-          uri: lb://ms-evento-service
-          predicates:
-            - Path=/evento/**
-        - id: ms-asistencia-service
-          uri: lb://ms-asistencia-service
-          predicates:
-            - Path=/asistencia/**
+        #- id: ms-evento-service
+        #  uri: lb://ms-evento-service
+        #  predicates:
+        #    - Path=/evento/**
+        #- id: ms-asistencia-service
+        #  uri: lb://ms-asistencia-service
+        #  predicates:
+        #    - Path=/asistencia/**
 
 
