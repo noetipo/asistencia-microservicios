@@ -3,8 +3,8 @@ package pe.upeu.msconfiguracion.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pe.upeu.msconfiguracion.dto.CicloDto;
 import pe.upeu.msconfiguracion.service.CicloService;
@@ -18,9 +18,8 @@ public class CicloController {
     @Autowired
     private CicloService cicloService;
 
-    @GetMapping("/{idEscuelaProfesional}")
-
-    public ResponseEntity<List<CicloDto>> list(@PathVariable(required = true) Integer idEscuelaProfesional) {
+    @GetMapping()
+    public ResponseEntity<List<CicloDto>> list(@RequestParam Integer idEscuelaProfesional) {
         return ResponseEntity.ok().body(cicloService.list(idEscuelaProfesional));
     }
 
