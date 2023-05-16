@@ -15,22 +15,22 @@ public class PersonaServiceImpl implements PersonaService {
     private ConfiguracionFeign configuracionFeign;
 
     @Override
-    public List<PersonaDto> list() {
+    public List<PersonaDto.Response> list() {
         return configuracionFeign.listPersona().getBody();
     }
 
     @Override
-    public PersonaDto save(PersonaDto personaDto) {
-        return configuracionFeign.savePersona(personaDto).getBody();
+    public PersonaDto.Response save(PersonaDto.Request personaDtoRequest) {
+        return configuracionFeign.savePersona(personaDtoRequest).getBody();
     }
 
     @Override
-    public PersonaDto update(PersonaDto personaDto) {
-        return configuracionFeign.updatePersona(personaDto).getBody();
+    public PersonaDto.Response update(PersonaDto.Request personaDtoRequest) {
+        return configuracionFeign.updatePersona(personaDtoRequest).getBody();
     }
 
     @Override
-    public Optional<PersonaDto> listById(Integer id) {
+    public Optional<PersonaDto.Response> listById(Integer id) {
         return Optional.of(configuracionFeign.listByIdPersona(id).getBody());
     }
 
@@ -40,7 +40,7 @@ public class PersonaServiceImpl implements PersonaService {
     }
 
     @Override
-    public List<PersonaDto> findByCicloAndGrupoAndEscuelaProfesionalIdAndEstadoTrue(String ciclo, String grupo, Integer escuelaProfesionalId) {
+    public List<PersonaDto.Response> findByCicloAndGrupoAndEscuelaProfesionalIdAndEstadoTrue(String ciclo, String grupo, Integer escuelaProfesionalId) {
         return configuracionFeign.findByCicloAndGrupoAndEscuelaProfesionalIdAndEstadoTruePersona(ciclo, grupo, escuelaProfesionalId).getBody();
     }
 }

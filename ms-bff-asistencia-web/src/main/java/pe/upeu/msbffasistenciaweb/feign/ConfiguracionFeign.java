@@ -96,22 +96,22 @@ public interface ConfiguracionFeign {
     public String deleteByIdPeriodo(@PathVariable(required = true) Integer id);
 
     @GetMapping("/persona")
-    public ResponseEntity<List<PersonaDto>> listPersona();
+    public ResponseEntity<List<PersonaDto.Response>> listPersona();
 
     @PostMapping("/persona")
-    public ResponseEntity<PersonaDto> savePersona(@RequestBody PersonaDto personaDto);
+    public ResponseEntity<PersonaDto.Response> savePersona(@RequestBody PersonaDto.Request personaDtoRequest);
 
     @PutMapping("/persona")
-    public ResponseEntity<PersonaDto> updatePersona(@RequestBody PersonaDto personaDto);
+    public ResponseEntity<PersonaDto.Response> updatePersona(@RequestBody PersonaDto.Request personaDtoRequest);
 
     @GetMapping("/persona/{id}")
-    public ResponseEntity<PersonaDto> listByIdPersona(@PathVariable(required = true) Integer id);
+    public ResponseEntity<PersonaDto.Response> listByIdPersona(@PathVariable(required = true) Integer id);
 
     @DeleteMapping("/persona/{id}")
     public String deleteByIdPersona(@PathVariable(required = true) Integer id);
 
     @GetMapping("/persona/matricula")
-    public ResponseEntity<List<PersonaDto>> findByCicloAndGrupoAndEscuelaProfesionalIdAndEstadoTruePersona(@RequestParam String ciclo,
+    public ResponseEntity<List<PersonaDto.Response>> findByCicloAndGrupoAndEscuelaProfesionalIdAndEstadoTruePersona(@RequestParam String ciclo,
                                                                                                            @RequestParam String grupo,
                                                                                                            @RequestParam Integer escuelaProfesionalId);
 

@@ -18,9 +18,9 @@ public class MsBffAsistenciaWebApplication {
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI().info(new Info()
-                .title("OPEN API MICROSERVICIO CONFIGURACION ")
+                .title("OPEN API MICROSERVICIO BFF WEB ")
                 .version("0.0.1")
-                .description("Servicios web configuracion")
+                .description("Servicios web bff web")
                 .termsOfService("http://swagger.io/terms/")
                 .license(new License().name("Apache 2.0").url("http://springdoc.org"))
         );
