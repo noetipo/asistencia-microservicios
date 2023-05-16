@@ -3,6 +3,7 @@ package pe.upeu.msconfiguracion.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pe.upeu.msconfiguracion.dto.PersonaDto;
 import pe.upeu.msconfiguracion.entity.Persona;
 import pe.upeu.msconfiguracion.service.PersonaService;
 
@@ -21,13 +22,13 @@ public class PersonaController {
     }
 
     @PostMapping()
-    public ResponseEntity<Persona> save(@RequestBody Persona persona) {
-        return ResponseEntity.ok(personaService.save(persona));
+    public ResponseEntity<Persona> save(@RequestBody PersonaDto personaDto) {
+        return ResponseEntity.ok(personaService.save(personaDto));
     }
 
     @PutMapping()
-    public ResponseEntity<Persona> update(@RequestBody Persona persona) {
-        return ResponseEntity.ok(personaService.update(persona));
+    public ResponseEntity<Persona> update(@RequestBody PersonaDto personaDto) {
+        return ResponseEntity.ok(personaService.update(personaDto));
     }
 
     @GetMapping("/{id}")
