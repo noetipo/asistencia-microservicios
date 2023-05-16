@@ -24,8 +24,8 @@ spring:
       routes:
         - id: ms-configuracion-service
           uri: lb://ms-configuracion-service
-          predicates:
-            - Path=/institucion/**,/filial/**,/facultad/**,/escuela-profesional/**,/periodo/**,/persona/**,/cilclo/**,/grupo/**
+          #predicates:
+          #  - Path=/institucion/**,/filial/**,/facultad/**,/escuela-profesional/**,/periodo/**,/persona/**,/cilclo/**,/grupo/**
         - id: ms-evento-service
           uri: lb://ms-evento-service
           predicates:
