@@ -2,10 +2,7 @@ package pe.upeu.msbffasistenciaweb.service.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.upeu.msbffasistenciaweb.dto.AsistenciaDto;
-import pe.upeu.msbffasistenciaweb.dto.EventoDto;
-import pe.upeu.msbffasistenciaweb.dto.PersonaDto;
-import pe.upeu.msbffasistenciaweb.dto.ReporteAsistenciaDto;
+import pe.upeu.msbffasistenciaweb.dto.*;
 import pe.upeu.msbffasistenciaweb.feign.AsistenciaFeign;
 import pe.upeu.msbffasistenciaweb.feign.ConfiguracionFeign;
 import pe.upeu.msbffasistenciaweb.feign.EventoFeign;
@@ -14,6 +11,7 @@ import pe.upeu.msbffasistenciaweb.service.AsistenciaService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class AsistenciaServiceImpl implements AsistenciaService {
@@ -61,8 +59,10 @@ public class AsistenciaServiceImpl implements AsistenciaService {
         eventoDtoResponse.setEscuelaProfesionalDto(configuracionFeign.listByIdEscuelaProfesional(eventoDtoResponse.getEscuelaProfesionalId()).getBody());
         eventoDtoResponse.getMatriculas().stream().parallel().map(matriculaDto -> {
             PersonaDto.Response personaDtoResponse = configuracionFeign.listByIdPersona(matriculaDto.getPersonaId()).getBody();
+            System.out.println(actividadId+ " ========= "+ matriculaDto.getId());
             AsistenciaDto asistenciaDto = asistenciaFeign.findByEventoDetalleIdAndMatriculaId(actividadId, matriculaDto.getId()).getBody();
             reporteAsistenciaDtos.add(ReporteAsistenciaDto.builder()
+                    .dni(personaDtoResponse.getDni())
                     .codigo(personaDtoResponse.getCodigo())
                     .nombre(personaDtoResponse.getNombre())
                     .nombres(personaDtoResponse.getNombres())
@@ -72,7 +72,8 @@ public class AsistenciaServiceImpl implements AsistenciaService {
                     .fechaSalida(asistenciaDto.getFechaSalida())
                     .build());
             return matriculaDto;
-        });
+        }).collect(Collectors.toList());
+
         return reporteAsistenciaDtos;
     }
 }

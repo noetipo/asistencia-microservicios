@@ -41,7 +41,7 @@ public class AsistenciaServiceImpl implements AsistenciaService {
 
     @Override
     public Optional<Asistencia> findByEventoDetalleIdAndMatriculaId(Integer eventoDetalleid, Integer matriculaId) {
-        return Optional.of(asistenciaRepository.findByEventoDetalleIdAndMatriculaId(eventoDetalleid, matriculaId).get());
+        return Optional.of(asistenciaRepository.findByEventoDetalleIdAndMatriculaId(eventoDetalleid, matriculaId).orElse(new Asistencia()));
     }
 
 

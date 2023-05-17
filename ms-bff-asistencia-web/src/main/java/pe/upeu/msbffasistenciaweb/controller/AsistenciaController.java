@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.upeu.msbffasistenciaweb.dto.AsistenciaDto;
+import pe.upeu.msbffasistenciaweb.dto.MensajeDto;
 import pe.upeu.msbffasistenciaweb.dto.ReporteAsistenciaDto;
 import pe.upeu.msbffasistenciaweb.service.AsistenciaService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/asistencia")
@@ -42,10 +44,13 @@ public class AsistenciaController {
     }
 
     @GetMapping("/reporte")
-    public ResponseEntity<List<ReporteAsistenciaDto>> reporteAsistencia(@RequestParam Integer eventoDetalleid,
+    public ResponseEntity<List<ReporteAsistenciaDto>> reporteAsistencia(@RequestParam Integer eventoId,
                                                                   @RequestParam Integer actividadId) {
-        return ResponseEntity.ok().body(asistenciaService.reporteAsistencia(eventoDetalleid, actividadId));
+        return ResponseEntity.ok().body(asistenciaService.reporteAsistencia(eventoId, actividadId));
     }
 
-
+    @GetMapping("/registro")
+    public ResponseEntity<Optional<MensajeDto>> saveAttendance(@RequestParam Integer eventoDetalleId, @RequestParam  Integer eventoId, @RequestParam String dni) {
+        return ResponseEntity.ok().body(asistenciaService.registrarAsistencia(eventoDetalleId, eventoId, dni));
+    }
 }
