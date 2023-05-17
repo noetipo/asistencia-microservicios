@@ -43,8 +43,8 @@ public class AsistenciaController {
 
     @GetMapping("/reporte")
     public ResponseEntity<List<ReporteAsistenciaDto>> reporteAsistencia(@RequestParam Integer eventoDetalleid,
-                                                                  @RequestParam Integer matriculaId) {
-        return ResponseEntity.ok().body(asistenciaService.reporteAsistencia(eventoDetalleid, matriculaId));
+                                                                  @RequestParam Integer actividadId) {
+        return ResponseEntity.ok().body(asistenciaService.reporteAsistencia(eventoDetalleid, actividadId));
     }
 
 

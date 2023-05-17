@@ -17,7 +17,7 @@ public interface AsistenciaService {
 
     public void deleteById(Integer id);
 
-    public Optional<AsistenciaDto> findByEventoDetalleIdAndMatriculaId(Integer eventoDetalleid, Integer matriculaId);
+    public Optional<AsistenciaDto> findByEventoDetalleIdAndMatriculaId(Integer eventoDetalleid, Integer actividadId);
 
     public List<ReporteAsistenciaDto> reporteAsistencia(Integer eventoId, Integer actividadId);
 }
