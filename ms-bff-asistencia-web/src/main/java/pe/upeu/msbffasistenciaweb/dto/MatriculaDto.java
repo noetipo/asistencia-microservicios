@@ -6,4 +6,5 @@ import lombok.Data;
 public class MatriculaDto {
     private Integer id;
     private Integer personaId;
+    private PersonaDto.Response personaDto;
 }

@@ -15,4 +15,6 @@ public interface EventoService {
     public Optional<Evento> listById(Integer id);
 
     public void deleteById(Integer id);
+
+    public List<Evento> findByEscuelaProfesionalIdAndEstadoTrue(Integer id);
 }

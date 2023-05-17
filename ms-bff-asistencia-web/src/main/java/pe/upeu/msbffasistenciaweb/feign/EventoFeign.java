@@ -11,17 +11,20 @@ import java.util.List;
 public interface EventoFeign {
 
     @GetMapping()
-    public ResponseEntity<List<EventoDto>> list();
+    public ResponseEntity<List<EventoDto.Response>> list();
 
     @PostMapping()
-    public ResponseEntity<EventoDto> save(@RequestBody EventoDto eventoDto);
+    public ResponseEntity<EventoDto.Request> save(@RequestBody EventoDto.Request eventoDtoRequest);
 
     @PutMapping()
-    public ResponseEntity<EventoDto> update(@RequestBody EventoDto eventoDto);
+    public ResponseEntity<EventoDto.Request> update(@RequestBody EventoDto.Request eventoDtoRequest);
 
     @GetMapping("/{id}")
-    public ResponseEntity<EventoDto> listById(@PathVariable(required = true) Integer id);
+    public ResponseEntity<EventoDto.Response> listById(@PathVariable(required = true) Integer id);
 
     @DeleteMapping("/{id}")
     public String deleteById(@PathVariable(required = true) Integer id);
+
+    @GetMapping("/escuela-profesional/{id}")
+    public ResponseEntity<List<EventoDto.Response>> findByEscuelaProfesionalIdAndEstadoTrue(@PathVariable(required = true) Integer id);
 }

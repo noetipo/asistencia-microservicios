@@ -38,4 +38,9 @@ public class EventoServiceImpl implements EventoService {
     public void deleteById(Integer id) {
         eventoRepository.deleteById(id);
     }
+
+    @Override
+    public List<Evento> findByEscuelaProfesionalIdAndEstadoTrue(Integer id) {
+        return eventoRepository.findByEscuelaProfesionalIdAndEstadoTrue(id);
+    }
 }

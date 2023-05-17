@@ -15,4 +15,6 @@ public interface PeriodoService {
     public Optional<Periodo> listById(Integer id);
 
     public void deleteById(Integer id);
+
+    public Optional<Periodo> findByEstadoTrue();
 }

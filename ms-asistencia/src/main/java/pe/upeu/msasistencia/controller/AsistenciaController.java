@@ -39,4 +39,12 @@ public class AsistenciaController {
         asistenciaService.deleteById(id);
         return "Deleted Successfully";
     }
+
+    @GetMapping("/reporte")
+    public ResponseEntity<Asistencia> findByEventoDetalleIdAndMatriculaId(@RequestParam Integer eventoDetalleid,
+                                                                          @RequestParam Integer matriculaId) {
+        return ResponseEntity.ok().body(asistenciaService.findByEventoDetalleIdAndMatriculaId(eventoDetalleid, matriculaId).orElse(null));
+    }
+
+
 }

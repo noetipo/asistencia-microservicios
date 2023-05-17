@@ -15,4 +15,7 @@ public interface AsistenciaService {
     public Optional<Asistencia> listById(Integer id);
 
     public void deleteById(Integer id);
+
+    public Optional<Asistencia> findByEventoDetalleIdAndMatriculaId(Integer eventoDetalleid, Integer matriculaId);
 }
+

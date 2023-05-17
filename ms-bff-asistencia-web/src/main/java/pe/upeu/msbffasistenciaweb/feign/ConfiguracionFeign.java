@@ -95,6 +95,11 @@ public interface ConfiguracionFeign {
     @DeleteMapping("/periodo/{id}")
     public String deleteByIdPeriodo(@PathVariable(required = true) Integer id);
 
+
+    @GetMapping("/periodo/activo")
+    public ResponseEntity<PeriodoDto> findByEstadoTrue();
+
+
     @GetMapping("/persona")
     public ResponseEntity<List<PersonaDto.Response>> listPersona();
 
@@ -112,8 +117,8 @@ public interface ConfiguracionFeign {
 
     @GetMapping("/persona/matricula")
     public ResponseEntity<List<PersonaDto.Response>> findByCicloAndGrupoAndEscuelaProfesionalIdAndEstadoTruePersona(@RequestParam String ciclo,
-                                                                                                           @RequestParam String grupo,
-                                                                                                           @RequestParam Integer escuelaProfesionalId);
+                                                                                                                    @RequestParam String grupo,
+                                                                                                                    @RequestParam Integer escuelaProfesionalId);
 
     @GetMapping("/ciclo")
     public ResponseEntity<List<CicloDto>> listCiclo(@RequestParam Integer idEscuelaProfesional);

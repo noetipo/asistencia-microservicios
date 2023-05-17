@@ -38,4 +38,11 @@ public class AsistenciaServiceImpl implements AsistenciaService {
     public void deleteById(Integer id) {
         asistenciaRepository.deleteById(id);
     }
+
+    @Override
+    public Optional<Asistencia> findByEventoDetalleIdAndMatriculaId(Integer eventoDetalleid, Integer matriculaId) {
+        return Optional.of(asistenciaRepository.findByEventoDetalleIdAndMatriculaId(eventoDetalleid, matriculaId).get());
+    }
+
+
 }

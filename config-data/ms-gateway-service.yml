@@ -27,7 +27,7 @@ spring:
         - id: ms-bff-asistencia-web-service
           uri: lb://ms-bff-asistencia-web-service
           predicates:
-            - Path=/institucion/**,/filial/**,/facultad/**,/escuela-profesional/**,/periodo/**,/persona/**,/ciclo**,/grupo**,/persona/matricula**,/evento/**
+            - Path=/institucion/**,/filial/**,/facultad/**,/escuela-profesional/**,/periodo/**,/persona/**,/ciclo**,/grupo**,/persona/matricula**,/evento/**,/asistencia**
         #- id: ms-evento-service
         #  uri: lb://ms-evento-service
         #  predicates:

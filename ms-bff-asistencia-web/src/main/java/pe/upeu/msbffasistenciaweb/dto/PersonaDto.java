@@ -22,7 +22,6 @@ public class PersonaDto {
         private EscuelaProfesionalDto escuelaProfesional;
     }
 
-
     @Data
     public static class Request {
         private Integer id;
@@ -40,6 +39,4 @@ public class PersonaDto {
         private Integer periodoId;
         private Integer escuelaProfesionalId;
     }
-
-
 }

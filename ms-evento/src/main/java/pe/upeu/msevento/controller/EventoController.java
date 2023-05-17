@@ -40,5 +40,8 @@ public class EventoController {
         eventoService.deleteById(id);
         return "Deleted Successfully";
     }
-
+    @GetMapping("/escuela-profesional/{id}")
+    public ResponseEntity<List<Evento>> findByEscuelaProfesionalIdAndEstadoTrue(@PathVariable(required = true) Integer id) {
+        return ResponseEntity.ok().body(eventoService.findByEscuelaProfesionalIdAndEstadoTrue(id));
+    }
 }

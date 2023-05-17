@@ -41,4 +41,10 @@ public class PeriodoController {
         return "Deleted Successfully";
     }
 
+    @GetMapping("/activo")
+    public ResponseEntity<Periodo> findByEstadoTrue() {
+        return ResponseEntity.ok().body(periodoService.findByEstadoTrue().get());
+    }
+
+
 }

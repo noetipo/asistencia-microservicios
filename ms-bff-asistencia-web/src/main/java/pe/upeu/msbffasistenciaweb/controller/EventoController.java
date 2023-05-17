@@ -16,22 +16,22 @@ public class EventoController {
     private EventoService eventoService;
 
     @GetMapping()
-    public ResponseEntity<List<EventoDto>> list() {
+    public ResponseEntity<List<EventoDto.Response>> list() {
         return ResponseEntity.ok().body(eventoService.list());
     }
 
     @PostMapping()
-    public ResponseEntity<EventoDto> save(@RequestBody EventoDto eventoDto) {
-        return ResponseEntity.ok(eventoService.save(eventoDto));
+    public ResponseEntity<EventoDto.Response> save(@RequestBody EventoDto.Request eventoDtoRequest) {
+        return ResponseEntity.ok(eventoService.save(eventoDtoRequest));
     }
 
     @PutMapping()
-    public ResponseEntity<EventoDto> update(@RequestBody EventoDto eventoDto) {
-        return ResponseEntity.ok(eventoService.update(eventoDto));
+    public ResponseEntity<EventoDto.Response> update(@RequestBody EventoDto.Request eventoDtoRequest) {
+        return ResponseEntity.ok(eventoService.update(eventoDtoRequest));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EventoDto> listById(@PathVariable(required = true) Integer id) {
+    public ResponseEntity<EventoDto.Response> listById(@PathVariable(required = true) Integer id) {
         return ResponseEntity.ok().body(eventoService.listById(id).get());
     }
 
@@ -40,5 +40,8 @@ public class EventoController {
         eventoService.deleteById(id);
         return "Deleted Successfully";
     }
-
+    @GetMapping("/escuela-profesional/{id}")
+    public ResponseEntity<List<EventoDto.Response>> findByEscuelaProfesionalIdAndEstadoTrue(@PathVariable(required = true) Integer id) {
+        return ResponseEntity.ok().body(eventoService.findByEscuelaProfesionalIdAndEstadoTrue(id)).getBody();
+    }
 }

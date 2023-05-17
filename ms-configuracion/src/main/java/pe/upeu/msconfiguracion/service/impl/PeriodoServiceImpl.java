@@ -38,4 +38,9 @@ public class PeriodoServiceImpl implements PeriodoService {
     public void deleteById(Integer id) {
         periodoRepository.deleteById(id);
     }
+
+    @Override
+    public Optional<Periodo> findByEstadoTrue() {
+        return Optional.of(periodoRepository.findByEstadoTrue().get());
+    }
 }
