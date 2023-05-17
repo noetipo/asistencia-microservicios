@@ -16,5 +16,8 @@ public interface PersonaService {
     public Optional<Persona> listById(Integer id);
 
     public void deleteById(Integer id);
-    public List<Persona> findByCicloAndGrupoAndEscuelaProfesionalIdAndEstadoTrue(String ciclo, String grupo,Integer escuelaProfesionalId);
+
+    public List<Persona> findByCicloAndGrupoAndEscuelaProfesionalIdAndEstadoTrue(String ciclo, String grupo, Integer escuelaProfesionalId);
+
+    public Optional<Persona> findByCodigoOrDni(String codigo, String dni);
 }

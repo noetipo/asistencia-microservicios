@@ -120,6 +120,9 @@ public interface ConfiguracionFeign {
                                                                                                                     @RequestParam String grupo,
                                                                                                                     @RequestParam Integer escuelaProfesionalId);
 
+    @GetMapping("/persona/codigo")
+    public ResponseEntity<PersonaDto.Response> findByCodigoOrDni(@RequestParam String codigo, @RequestParam String dni);
+
     @GetMapping("/ciclo")
     public ResponseEntity<List<CicloDto>> listCiclo(@RequestParam Integer idEscuelaProfesional);
 

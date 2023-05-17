@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface AsistenciaService {
     public List<AsistenciaDto> list();
 
-    public AsistenciaDto save(AsistenciaDto asistenciaDto);
+    public AsistenciaDto save(Integer eventoDetalleId, Integer eventoId, String dni);
 
     public AsistenciaDto update(AsistenciaDto asistenciaDto);
 

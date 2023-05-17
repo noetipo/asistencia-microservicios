@@ -41,10 +41,17 @@ public class PersonaController {
         personaService.deleteById(id);
         return "Deleted Successfully";
     }
+
     @GetMapping("/matricula")
     public ResponseEntity<List<Persona>> findByCicloAndGrupoAndEscuelaProfesionalIdAndEstadoTrue(@RequestParam String ciclo,
                                                                                                  @RequestParam String grupo,
                                                                                                  @RequestParam Integer escuelaProfesionalId) {
         return ResponseEntity.ok().body(personaService.findByCicloAndGrupoAndEscuelaProfesionalIdAndEstadoTrue(ciclo, grupo, escuelaProfesionalId));
     }
+
+    @GetMapping("/codigo")
+    public ResponseEntity<Persona> findByCodigoOrDni(@RequestParam String codigo, @RequestParam String dni) {
+        return ResponseEntity.ok().body(personaService.findByCodigoOrDni(codigo, dni).orElse(new Persona()));
+    }
+
 }

@@ -23,8 +23,8 @@ public class AsistenciaController {
     }
 
     @PostMapping()
-    public ResponseEntity<AsistenciaDto> save(@RequestBody AsistenciaDto asistenciaDto) {
-        return ResponseEntity.ok(asistenciaService.save(asistenciaDto));
+    public ResponseEntity<AsistenciaDto> save(@RequestParam Integer eventoDetalleId, @RequestParam Integer eventoId, @RequestParam String dni) {
+        return ResponseEntity.ok(asistenciaService.save(eventoDetalleId, eventoId, dni));
     }
 
     @PutMapping()
@@ -45,12 +45,17 @@ public class AsistenciaController {
 
     @GetMapping("/reporte")
     public ResponseEntity<List<ReporteAsistenciaDto>> reporteAsistencia(@RequestParam Integer eventoId,
-                                                                  @RequestParam Integer actividadId) {
+                                                                        @RequestParam Integer actividadId) {
         return ResponseEntity.ok().body(asistenciaService.reporteAsistencia(eventoId, actividadId));
     }
 
     @GetMapping("/registro")
-    public ResponseEntity<Optional<MensajeDto>> saveAttendance(@RequestParam Integer eventoDetalleId, @RequestParam  Integer eventoId, @RequestParam String dni) {
-        return ResponseEntity.ok().body(asistenciaService.registrarAsistencia(eventoDetalleId, eventoId, dni));
+    public ResponseEntity<Optional<MensajeDto>> saveAttendance(@RequestParam Integer eventoDetalleId,
+                                                               @RequestParam Integer eventoId,
+                                                               @RequestParam String dni) {
+
+       System.out.println("=====registro asistencia");
+        asistenciaService.save(eventoDetalleId, eventoId, dni);
+        return ResponseEntity.ok(Optional.of(new MensajeDto("Registro correcto")));
     }
 }

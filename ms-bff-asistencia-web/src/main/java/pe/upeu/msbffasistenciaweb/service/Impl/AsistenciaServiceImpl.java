@@ -28,8 +28,23 @@ public class AsistenciaServiceImpl implements AsistenciaService {
     }
 
     @Override
-    public AsistenciaDto save(AsistenciaDto asistenciaDto) {
-        return null;
+    public AsistenciaDto save(Integer eventoDetalleId, Integer eventoId, String dni) {
+        EventoDto.Response eventoDtoResponse = eventoFeign.listById(eventoId).getBody();
+        int matriculaId=0;
+        List<MatriculaDto> matriculaDtos = eventoDtoResponse.getMatriculas().stream().parallel().map(matriculaDto -> {
+            PersonaDto.Response personaDtoResponse = configuracionFeign.listByIdPersona(matriculaDto.getPersonaId()).getBody();
+            matriculaDto.setPersonaDto(personaDtoResponse);
+            return matriculaDto;
+        }).collect(Collectors.toList());
+        for (MatriculaDto matriculaDto :matriculaDtos){
+            if ( matriculaDto.getPersonaDto().getDni().equals(dni) || matriculaDto.getPersonaDto().getCodigo().equals(dni)){
+                matriculaId=matriculaDto.getId();
+            }
+        }
+        AsistenciaDto asistenciaDto= new AsistenciaDto();
+        asistenciaDto.setEventoDetalleId(eventoDetalleId);
+        asistenciaDto.setMatriculaId(matriculaId);
+        return asistenciaFeign.save(asistenciaDto).getBody();
     }
 
     @Override
@@ -59,7 +74,7 @@ public class AsistenciaServiceImpl implements AsistenciaService {
         eventoDtoResponse.setEscuelaProfesionalDto(configuracionFeign.listByIdEscuelaProfesional(eventoDtoResponse.getEscuelaProfesionalId()).getBody());
         eventoDtoResponse.getMatriculas().stream().parallel().map(matriculaDto -> {
             PersonaDto.Response personaDtoResponse = configuracionFeign.listByIdPersona(matriculaDto.getPersonaId()).getBody();
-            System.out.println(actividadId+ " ========= "+ matriculaDto.getId());
+            System.out.println(actividadId + " ========= " + matriculaDto.getId());
             AsistenciaDto asistenciaDto = asistenciaFeign.findByEventoDetalleIdAndMatriculaId(actividadId, matriculaDto.getId()).getBody();
             reporteAsistenciaDtos.add(ReporteAsistenciaDto.builder()
                     .dni(personaDtoResponse.getDni())
