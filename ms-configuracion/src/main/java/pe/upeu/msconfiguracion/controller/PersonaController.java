@@ -1,6 +1,8 @@
 package pe.upeu.msconfiguracion.controller;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.upeu.msconfiguracion.dto.PersonaDto;
@@ -30,7 +32,7 @@ public class PersonaController {
     public ResponseEntity<Persona> update(@RequestBody PersonaDto personaDto) {
         return ResponseEntity.ok(personaService.update(personaDto));
     }
-
+    @CircuitBreaker(name = "personaCB", fallbackMethod = "fallBackGetPersona")
     @GetMapping("/{id}")
     public ResponseEntity<Persona> listById(@PathVariable(required = true) Integer id) {
         return ResponseEntity.ok().body(personaService.listById(id).get());
@@ -53,5 +55,7 @@ public class PersonaController {
     public ResponseEntity<Persona> findByCodigoOrDni(@RequestParam String codigo, @RequestParam String dni) {
         return ResponseEntity.ok().body(personaService.findByCodigoOrDni(codigo, dni).orElse(new Persona()));
     }
-
+    private ResponseEntity<Persona> fallBackGetPersona(@PathVariable(required = true) Integer id, RuntimeException e) {
+        return new ResponseEntity("La Persona " + id + " no responde", HttpStatus.OK);
+    }
 }

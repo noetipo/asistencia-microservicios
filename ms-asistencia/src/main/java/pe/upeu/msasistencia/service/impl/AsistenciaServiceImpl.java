@@ -23,19 +23,18 @@ public class AsistenciaServiceImpl implements AsistenciaService {
     @Override
     public Asistencia save(Asistencia asistencia) {
         Optional<Asistencia> asistencia1 = asistenciaRepository.findByEventoDetalleIdAndMatriculaId(asistencia.getEventoDetalleId(), asistencia.getMatriculaId());
+        Asistencia asistenciaGuardar = new Asistencia();
         if (asistencia1.isPresent()) {
             asistencia1.get().setFechaSalida(new Date());
             asistenciaRepository.save(asistencia1.get());
         } else {
-            Asistencia asistenciaGuardar = new Asistencia();
+
             asistenciaGuardar.setFechaEntrada(new Date());
             asistenciaGuardar.setMatriculaId(asistencia.getMatriculaId());
             asistenciaGuardar.setEventoDetalleId(asistencia.getEventoDetalleId());
             asistenciaRepository.save(asistenciaGuardar);
         }
-
-
-        return asistenciaRepository.save(asistencia);
+        return asistenciaGuardar;
     }
 
     @Override
