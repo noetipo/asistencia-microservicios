@@ -1,5 +1,6 @@
 package pe.upeu.msevento.controller;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class EventoController {
     public ResponseEntity<Evento> update(@RequestBody Evento evento) {
         return ResponseEntity.ok(eventoService.update(evento));
     }
-
+    @CircuitBreaker(name = "eventoCB", fallbackMethod = "fallBackGetEvento")
     @GetMapping("/{id}")
     public ResponseEntity<Evento> listById(@PathVariable(required = true) Integer id) {
         return ResponseEntity.ok().body(eventoService.listById(id).get());
@@ -43,5 +44,11 @@ public class EventoController {
     @GetMapping("/escuela-profesional/{id}")
     public ResponseEntity<List<Evento>> findByEscuelaProfesionalIdAndEstadoTrue(@PathVariable(required = true) Integer id) {
         return ResponseEntity.ok().body(eventoService.findByEscuelaProfesionalIdAndEstadoTrue(id));
+    }
+
+    private ResponseEntity<Evento> fallBackGetEvento(@PathVariable(required = true) Integer id, RuntimeException e) {
+        Evento evento = new Evento();
+        evento.setId(id);
+        return ResponseEntity.ok().body(evento);
     }
 }

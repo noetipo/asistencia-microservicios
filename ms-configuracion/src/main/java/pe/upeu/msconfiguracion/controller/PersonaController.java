@@ -56,6 +56,8 @@ public class PersonaController {
         return ResponseEntity.ok().body(personaService.findByCodigoOrDni(codigo, dni).orElse(new Persona()));
     }
     private ResponseEntity<Persona> fallBackGetPersona(@PathVariable(required = true) Integer id, RuntimeException e) {
-        return new ResponseEntity("La Persona " + id + " no responde", HttpStatus.OK);
+        Persona persona = new Persona();
+        persona.setId(id);
+        return ResponseEntity.ok().body(persona);
     }
 }
