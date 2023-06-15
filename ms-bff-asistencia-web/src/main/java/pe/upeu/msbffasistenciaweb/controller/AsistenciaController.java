@@ -1,5 +1,6 @@
 package pe.upeu.msbffasistenciaweb.controller;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -48,14 +49,17 @@ public class AsistenciaController {
                                                                         @RequestParam Integer actividadId) {
         return ResponseEntity.ok().body(asistenciaService.reporteAsistencia(eventoId, actividadId));
     }
-
+    @CircuitBreaker(name = "asistenciaGuardarBffCB", fallbackMethod = "fallBackGetAsistenciaGuardarBff")
     @GetMapping("/registro")
     public ResponseEntity<Optional<MensajeDto>> saveAttendance(@RequestParam Integer eventoDetalleId,
                                                                @RequestParam Integer eventoId,
                                                                @RequestParam String dni) {
-
-       System.out.println("=====registro asistencia");
         asistenciaService.save(eventoDetalleId, eventoId, dni);
+        return ResponseEntity.ok(Optional.of(new MensajeDto("Registro correcto")));
+    }
+    private ResponseEntity<Optional<MensajeDto>> fallBackGetAsistenciaGuardarBff(@RequestParam Integer eventoDetalleId,
+                                                                                 @RequestParam Integer eventoId,
+                                                                                 @RequestParam String dni, RuntimeException e) {
         return ResponseEntity.ok(Optional.of(new MensajeDto("Registro correcto")));
     }
 }
