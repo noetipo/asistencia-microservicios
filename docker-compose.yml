@@ -1,0 +1,20 @@
+version: '3'
+services:
+  config-server:
+    build: ms-config-server
+    ports:
+      - 7070:7070
+  
+  registry-server:
+    build: ms-registry-server
+    ports:
+      - 8090:8090
+    depends_on:
+      - config-server
+
+  gateway-server:
+    build: ms-gateway-server
+    ports:
+      - 8080:8080
+    depends_on:
+      - config-server
