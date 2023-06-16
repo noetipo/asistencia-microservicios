@@ -34,6 +34,14 @@ spring:
           uri: lb://auth-service
           predicates:
             - Path=/auth/**
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
         #- id: ms-evento-service
         #  uri: lb://ms-evento-service
         #  predicates:
