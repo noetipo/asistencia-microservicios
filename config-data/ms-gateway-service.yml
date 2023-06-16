@@ -28,6 +28,12 @@ spring:
           uri: lb://ms-bff-asistencia-web-service
           predicates:
             - Path=/institucion/**,/filial/**,/facultad/**,/escuela-profesional/**,/periodo/**,/persona/**,/ciclo**,/grupo**,/persona/matricula**,/evento/**,/asistencia/reporte**,/asistencia/registro**
+          filters:
+            - AuthFilter
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
         #- id: ms-evento-service
         #  uri: lb://ms-evento-service
         #  predicates:
