@@ -8,10 +8,10 @@
 		<version>3.0.8-SNAPSHOT</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>admin-server</artifactId>
+	<groupId>pe.upeu</groupId>
+	<artifactId>ms-admin-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>admin-server</name>
+	<name>ms-admin-server</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>

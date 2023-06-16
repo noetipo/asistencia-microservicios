@@ -30,8 +30,8 @@ spring:
             - Path=/institucion/**,/filial/**,/facultad/**,/escuela-profesional/**,/periodo/**,/persona/**,/ciclo**,/grupo**,/persona/matricula**,/evento/**,/asistencia/reporte**,/asistencia/registro**
           filters:
             - AuthFilter
-        - id: auth-service
-          uri: lb://auth-service
+        - id: ms-auth-service
+          uri: lb://ms-auth-service
           predicates:
             - Path=/auth/**
 management:
