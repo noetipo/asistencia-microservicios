@@ -1,4 +1,4 @@
-package com.example.auth.dto;
+package pe.upeu.auth.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package com.example.auth.entity;
+package pe.upeu.auth.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

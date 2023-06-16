@@ -1,4 +1,4 @@
-package com.example.auth;
+package pe.upeu.auth;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

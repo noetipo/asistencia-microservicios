@@ -1,13 +1,13 @@
-package com.example.auth.service.impl;
+package pe.upeu.auth.service.impl;
 
-import com.example.auth.dto.AuthUserDto;
+import pe.upeu.auth.dto.AuthUserDto;
 
-import com.example.auth.entity.AuthUser;
+import pe.upeu.auth.entity.AuthUser;
 
-import com.example.auth.entity.TokenDto;
-import com.example.auth.repository.AuthRepository;
-import com.example.auth.security.JwtProvider;
-import com.example.auth.service.AuthUserService;
+import pe.upeu.auth.entity.TokenDto;
+import pe.upeu.auth.repository.AuthRepository;
+import pe.upeu.auth.security.JwtProvider;
+import pe.upeu.auth.service.AuthUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.example.auth.security;
+package pe.upeu.auth.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

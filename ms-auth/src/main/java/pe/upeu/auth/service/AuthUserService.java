@@ -1,8 +1,8 @@
-package com.example.auth.service;
+package pe.upeu.auth.service;
 
-import com.example.auth.dto.AuthUserDto;
-import com.example.auth.entity.AuthUser;
-import com.example.auth.entity.TokenDto;
+import pe.upeu.auth.dto.AuthUserDto;
+import pe.upeu.auth.entity.AuthUser;
+import pe.upeu.auth.entity.TokenDto;
 
 public interface AuthUserService {
     public AuthUser save(AuthUserDto authUserDto);

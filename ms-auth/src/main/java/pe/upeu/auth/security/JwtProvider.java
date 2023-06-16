@@ -1,6 +1,6 @@
-package com.example.auth.security;
+package pe.upeu.auth.security;
 
-import com.example.auth.entity.AuthUser;
+import pe.upeu.auth.entity.AuthUser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
