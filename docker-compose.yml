@@ -6,7 +6,9 @@ networks:
 
 services:
   config-server:
-    build: ms-config-server
+    build: 
+      context: ./ms-config-server
+      dockerfile: Dockerfile
     ports:
       - 7070:7070
     networks:
