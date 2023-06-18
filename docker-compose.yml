@@ -1,9 +1,16 @@
 version: '3'
+
+networks:
+  mi_red:
+    driver: bridge
+
 services:
   config-server:
     build: ms-config-server
     ports:
       - 7070:7070
+    networks:
+      - mi_red
   
   registry-server:
     build: ms-registry-server
@@ -11,6 +18,8 @@ services:
       - 8090:8090
     depends_on:
       - config-server
+    networks:
+      - mi_red
 
   gateway-server:
     build: ms-gateway-server
@@ -18,3 +27,5 @@ services:
       - 8080:8080
     depends_on:
       - config-server
+    networks:
+      - mi_red
