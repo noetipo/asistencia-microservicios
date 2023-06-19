@@ -1,15 +1,16 @@
 version: '3'
 
 networks:
-  mi_red:
+  micro_red:
     external: true
+    name: micro_red
 
 services:
   mysql-auth:
     image: mysql
     command: --default-authentication-plugin=mysql_native_password
     networks:
-      - mi_red
+      - micro_red
     environment:
       - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_DATABASE=ms_auth
@@ -19,7 +20,7 @@ services:
   ms-auth:
     build: .
     networks:
-      - mi_red
+      - micro_red
     depends_on:
       - mysql-auth
     

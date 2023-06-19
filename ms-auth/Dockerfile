@@ -3,8 +3,8 @@ FROM openjdk:17-jdk-alpine as build-auth
 RUN mkdir -p /code
 COPY . /code
 WORKDIR /code
-RUN ./mvnw compile
-RUN ./mvnw package
+# RUN ./mvnw compile
+RUN ./mvnw package  -DskipTests
 
 
 FROM openjdk:17-jdk-alpine as deploy-auth

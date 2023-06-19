@@ -1,8 +1,10 @@
 version: '3'
 
 networks:
-  mi_red:
+  micro_red:
     driver: bridge
+    name: micro_red
+
 
 services:
   config-server:
@@ -12,7 +14,7 @@ services:
     ports:
       - 7070:7070
     networks:
-      - mi_red
+      - micro_red
   
   registry-server:
     build: ms-registry-server
@@ -21,7 +23,7 @@ services:
     depends_on:
       - config-server
     networks:
-      - mi_red
+      - micro_red
 
   gateway-server:
     build: ms-gateway-server
@@ -30,4 +32,4 @@ services:
     depends_on:
       - config-server
     networks:
-      - mi_red
+      - micro_red
