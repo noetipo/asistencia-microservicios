@@ -15,7 +15,7 @@ spring:
     show-sql: true
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/ms_asistencia
+    url: jdbc:mysql://mysql-asistencia:3306/ms_asistencia
     username: root
     password: 123456
 

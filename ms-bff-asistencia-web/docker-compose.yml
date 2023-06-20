@@ -1,0 +1,15 @@
+version: '3'
+
+networks:
+  micro_red:
+    external: true
+    name: micro_red
+
+services:
+  
+  ms-bff-asistencia-web:
+    build: .
+    networks:
+      - micro_red
+    scale: 3    
+

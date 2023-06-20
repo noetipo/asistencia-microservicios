@@ -1,0 +1,27 @@
+version: '3'
+
+networks:
+  micro_red:
+    external: true
+    name: micro_red
+
+services:
+  mysql-configuration:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    networks:
+      - micro_red
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=ms_configuracion
+    ports:
+      - 3306:3306
+  
+  ms-configuration:
+    build: .
+    networks:
+      - micro_red
+    depends_on:
+      - mysql-configuration
+    scale: 3    
+

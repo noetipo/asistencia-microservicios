@@ -33,3 +33,12 @@ services:
       - config-server
     networks:
       - micro_red
+  
+  admin-server:
+    build: ms-admin-server
+    ports:
+      - 8080:8080
+    depends_on:
+      - config-server
+    networks:
+      - micro_red
