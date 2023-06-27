@@ -15,18 +15,21 @@ services:
       - 7070:7070
     networks:
       - micro_red
-    container_name: config-server
     deploy:
       resources:
         limits:
           cpus: '0.5'
           memory: 1g
 
+
+
+  
   registry-server:
     build: ms-registry-server
     ports:
       - 8090:8090
-
+    depends_on:
+      - config-server
     networks:
       - micro_red
     deploy:
@@ -34,7 +37,6 @@ services:
         limits:
           cpus: '0.5'
           memory: 1g
-    container_name: registry-server
 
 
   gateway-server:
@@ -50,7 +52,7 @@ services:
         limits:
           cpus: '0.5'
           memory: 1g
-    container_name: gateway-server
+
   
   admin-server:
     build: ms-admin-server
@@ -65,4 +67,3 @@ services:
         limits:
           cpus: '0.5'
           memory: 1g
-    container_name: admin-server
