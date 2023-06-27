@@ -16,13 +16,15 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_DATABASE=ms_asistencia
-    
+    ports:
+      - 3306:3306
     deploy:
       resources:
         limits:
-          cpus: '0.5'
-          memory: 1g
-    container_name: mysql-asistencia
+          cpus: '2'
+          memory: 4g
+    volumes:
+      - db_data:/var/lib/mysql
   
   ms-asistencia:
     build: .
@@ -32,9 +34,11 @@ services:
       - mysql-asistencia
 
     deploy:
-      replicas: 3
+      replicas: 4
       resources:
         limits:
           cpus: '0.5'
           memory: 1g
 
+volumes:
+  db_data:
