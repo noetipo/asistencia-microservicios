@@ -16,14 +16,15 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_DATABASE=ms_evento
-    #ports:
-    #  - 3306:3306
+    ports:
+      - 3309:3306
     deploy:
       resources:
         limits:
-          cpus: '0.5'
-          memory: 1g
-    container_name: mysql-evento
+          cpus: '2'
+          memory: 4g
+    volumes:
+      - db_data:/var/lib/mysql
   
   ms-evento:
     build: .
@@ -33,9 +34,11 @@ services:
       - mysql-evento
     
     deploy:
-      replicas: 3
+      replicas: 4
       resources:
         limits:
           cpus: '0.5'
           memory: 1g
 
+volumes:
+  db_data:

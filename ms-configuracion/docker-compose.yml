@@ -14,14 +14,15 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_DATABASE=ms_configuracion
-    #ports:
-    #  - 3306:3306
+    ports:
+      - 3308:3306
     deploy:
       resources:
         limits:
-          cpus: '0.5'
-          memory: 1g
-    container_name: mysql-configuration
+          cpus: '2'
+          memory: 4g
+    volumes:
+      - db_data:/var/lib/mysql
   
   ms-configuration:
     build: .
@@ -31,10 +32,12 @@ services:
       - mysql-configuration
     
     deploy:
-      replicas: 3
+      replicas: 4
       resources:
         limits:
           cpus: '0.5'
           memory: 1g
     
 
+volumes:
+  db_data:

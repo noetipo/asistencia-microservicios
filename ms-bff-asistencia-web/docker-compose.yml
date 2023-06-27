@@ -13,7 +13,7 @@ services:
       - micro_red
     
     deploy:
-      replicas: 3
+      replicas: 4
       resources:
         limits:
           cpus: '0.5'

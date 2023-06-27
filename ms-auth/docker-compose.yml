@@ -14,14 +14,15 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_DATABASE=ms_auth
-  #  ports:
-  #    - 3306:3306
+    ports:
+      - 3307:3306
     deploy:
       resources:
         limits:
-          cpus: '0.5'
-          memory: 1g
-    container_name: mysql_auth
+          cpus: '2'
+          memory: 4g
+    volumes:
+      - db_data:/var/lib/mysql
   
   ms-auth:
     build: .
@@ -31,7 +32,7 @@ services:
       - mysql-auth
     
     deploy:
-      replicas: 3
+      replicas: 4
       resources:
         limits:
           cpus: '0.5'
@@ -39,3 +40,5 @@ services:
     #container_name: ms-auth    
 
 
+volumes:
+  db_data:
