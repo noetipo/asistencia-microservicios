@@ -15,6 +15,9 @@ services:
       - 7070:7070
     networks:
       - micro_red
+    cpu_limit: 0.5
+    mem_limit: 1g
+
   
   registry-server:
     build: ms-registry-server
@@ -24,6 +27,8 @@ services:
       - config-server
     networks:
       - micro_red
+    cpu_limit: 0.5
+    mem_limit: 1g
 
   gateway-server:
     build: ms-gateway-server
@@ -33,6 +38,8 @@ services:
       - config-server
     networks:
       - micro_red
+    cpu_limit: 0.5
+    mem_limit: 1g
   
   admin-server:
     build: ms-admin-server
@@ -42,3 +49,5 @@ services:
       - config-server
     networks:
       - micro_red
+    cpu_limit: 0.5
+    mem_limit: 1g
