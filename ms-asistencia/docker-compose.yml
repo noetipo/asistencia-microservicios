@@ -16,6 +16,13 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_DATABASE=ms_asistencia
+    
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 1g
+    container_name: mysql-asistencia
   
   ms-asistencia:
     build: .
@@ -23,5 +30,11 @@ services:
       - micro_red
     depends_on:
       - mysql-asistencia
-    scale: 2 
+
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 1g
 
