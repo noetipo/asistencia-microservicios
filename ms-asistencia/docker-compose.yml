@@ -16,8 +16,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_DATABASE=ms_asistencia
-    ports:
-      - 3306:3306
   
   ms-asistencia:
     build: .
@@ -25,5 +23,5 @@ services:
       - micro_red
     depends_on:
       - mysql-asistencia
-    scale: 3    
+    scale: 2 
 
