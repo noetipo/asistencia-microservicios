@@ -11,7 +11,7 @@ spring:
           uri: https://github.com/noetipo/asistencia-microservicios.git
           searchPaths: config-data
           username: noetipo
-          password: Tipo47259697
+          password: xxxxxxxxxx
           default-label: main
 
 
