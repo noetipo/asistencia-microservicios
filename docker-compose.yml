@@ -11,6 +11,7 @@ services:
     build: 
       context: ./ms-config-server
       dockerfile: Dockerfile
+    restart: always
     ports:
       - 7070:7070
     networks:
@@ -27,6 +28,7 @@ services:
     ports:
       - 8090:8090
 
+    restart: always
     networks:
       - micro_red
     deploy:
@@ -39,6 +41,7 @@ services:
 
   gateway-server:
     build: ms-gateway-server
+    restart: always
     ports:
       - 8080:8080
     depends_on:
@@ -54,6 +57,7 @@ services:
   
   admin-server:
     build: ms-admin-server
+    restart: always
     ports:
       - 6060:6060
     depends_on:
