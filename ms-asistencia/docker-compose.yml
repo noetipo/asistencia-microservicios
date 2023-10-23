@@ -13,7 +13,6 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     networks:
       - micro_red
-    restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_DATABASE=ms_asistencia
@@ -29,7 +28,6 @@ services:
   
   ms-asistencia:
     build: .
-    restart: always
     networks:
       - micro_red
     depends_on:

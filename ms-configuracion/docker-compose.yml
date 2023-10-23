@@ -8,7 +8,6 @@ networks:
 services:
   mysql-configuration:
     image: mysql
-    restart: always
     command: --default-authentication-plugin=mysql_native_password
     networks:
       - micro_red
@@ -27,7 +26,6 @@ services:
   
   ms-configuration:
     build: .
-    restart: always
     networks:
       - micro_red
     depends_on:

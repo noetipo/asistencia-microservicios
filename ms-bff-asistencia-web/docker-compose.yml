@@ -9,7 +9,6 @@ services:
   
   ms-bff-asistencia-web:
     build: .
-    restart: always
     networks:
       - micro_red
     
