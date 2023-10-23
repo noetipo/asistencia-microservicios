@@ -4,6 +4,9 @@ echo "Iniciando config-server..."
 
 docker compose up -d config-server --build --force-recreate
 
+sleep 5
+
+
 echo "Esperando a que config-server esté disponible..."
 until docker compose exec config-server nc -z localhost 7070; do
   sleep 1
