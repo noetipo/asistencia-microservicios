@@ -1,5 +1,5 @@
 #!/bin/bash
-
+cd  /home/ubuntu/asistencia-microservicios
 echo "Iniciando config-server..."
 
 docker compose up -d config-server 
