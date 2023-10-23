@@ -2,9 +2,9 @@
 
 echo "Iniciando config-server..."
 
-docker compose up -d config-server --build --force-recreate
+docker compose up -d config-server 
 
-sleep 5
+sleep 300
 
 
 echo "Esperando a que config-server esté disponible..."
@@ -19,7 +19,6 @@ echo "Esperando a que registry-server esté disponible..."
 until docker compose exec registry-server nc -z localhost 8090; do
   sleep 1
 done
-
 
 echo "Iniciando el gateway-server..."
 docker compose up -d gateway-server 
