@@ -1,5 +1,11 @@
 #!/bin/bash
+<<<<<<< HEAD
 cd  /home/ubuntu/asistencia-microservicios
+=======
+
+cd /home/ubuntu/asistencia-microservicios 
+
+>>>>>>> d465530 (test)
 echo "Iniciando config-server..."
 
 docker compose up -d config-server 
